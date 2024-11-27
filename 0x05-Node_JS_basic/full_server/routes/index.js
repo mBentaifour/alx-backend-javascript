@@ -1,12 +1,12 @@
-import express from 'express';
+/* eslint-disable import/no-import-module-exports */
 import AppController from '../controllers/AppController';
 import StudentsController from '../controllers/StudentsController';
 
-const router = express.Router();
+const mapRoutes = (app) => {
+  app.get('/', AppController.getHomepage);
+  app.get('/students', StudentsController.getAllStudents);
+  app.get('/students/:major', StudentsController.getAllStudentsByMajor);
+};
 
-router.get('/', AppController.getHomepage);
-router.get('/students', StudentsController.getAllStudents);
-router.get('/students/:major', StudentsController.getAllStudentsByMajor);
-
-export default router;
-
+export default mapRoutes;
+module.exports = mapRoutes;
