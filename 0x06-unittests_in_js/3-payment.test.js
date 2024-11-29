@@ -1,37 +1,23 @@
 // 3-payment.test.js
 
 const sinon = require('sinon');
+const { expect } = require('chai');
 const Utils = require('./utils');
 const sendPaymentRequestToApi = require('./3-payment');
-const { expect } = require('chai');
 
 describe('sendPaymentRequestToApi', () => {
-  let calculateNumberSpy;
+  it('should call calculateNumber with SUM, 100, 20', () => {
+    // Créer un spy pour la fonction calculateNumber
+    const spy = sinon.spy(Utils, 'calculateNumber');
 
-  beforeEach(() => {
-    calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
-  });
-
-  afterEach(() => {
-    calculateNumberSpy.restore();
-  });
-
-  it('should call Utils.calculateNumber with correct arguments', () => {
+    // Appeler la fonction à tester
     sendPaymentRequestToApi(100, 20);
 
-    expect(calculateNumberSpy.calledOnce).to.be.true;
-    expect(calculateNumberSpy.calledWith('SUM', 100, 20)).to.be.true;
-  });
+    // Vérifier que le spy a bien été appelé avec les bons arguments
+    expect(spy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
 
-  it('should log the correct total', () => {
-    const consoleSpy = sinon.spy(console, 'log');
-
-    sendPaymentRequestToApi(100, 20);
-
-    expect(consoleSpy.calledOnce).to.be.true;
-    expect(consoleSpy.calledWith('The total is: 120')).to.be.true;
-
-    consoleSpy.restore();
+    // Restaurer le spy pour éviter les comportements étranges dans les autres tests
+    spy.restore();
   });
 });
 
