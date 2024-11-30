@@ -16,7 +16,7 @@ describe('sendPaymentRequestToApi', () => {
     // Vérifier que le spy a bien été appelé avec les bons arguments
     expect(spy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
 
-    // Restaurer le spy pour éviter les comportements étranges dans les autres tests
+    // Restaurer le spy pour éviter les comportements étranges
     spy.restore();
   });
 });
