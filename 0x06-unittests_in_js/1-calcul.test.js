@@ -1,3 +1,7 @@
+//contains test cases of this function
+//Usage of describe will help you to organize your test cases
+
+
 const assert = require('assert');
 const calculateNumber = require('./1-calcul');
 

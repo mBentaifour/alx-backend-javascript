@@ -14,7 +14,6 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "chai": "^4.2.0",
     "eslint": "^9.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
@@ -27,6 +26,7 @@
     "@babel/register": "^7.25.9",
     "assert": "^2.1.0",
     "babel-register": "^6.26.0",
+    "chai": "^4.5.0",
     "mocha": "^10.8.2"
   }
 }

@@ -1,3 +1,7 @@
+//Combining descriptions
+//a and b are always number
+//SUM, SUBTRACT, or DIVIDE (string) Operations
+
 function calculateNumber(type, a, b) {
   const num1 = Math.round(a);
   const num2 = Math.round(b);

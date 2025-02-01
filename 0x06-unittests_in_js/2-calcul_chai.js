@@ -2,22 +2,23 @@
 // Rewrite the test suite, using expect from Chai
 
 function calculateNumber(type, a, b) {
-  const roundedA = Math.round(a);
-  const roundedB = Math.round(b);
+  const num1 = Math.round(a);
+  const num2 = Math.round(b);
 
-  switch (type) {
-    case 'SUM':
-      return roundedA + roundedB;
-    case 'SUBTRACT':
-      return roundedA - roundedB;
-    case 'DIVIDE':
-      if (roundedB === 0) {
-        return 'Error';
-      }
-      return roundedA / roundedB;
-    default:
-      throw new Error('Invalid operation type');
+  if (type === 'SUM') {
+    return num1 + num2;
   }
+  if (type === 'SUBTRACT') {
+    return num1 - num2;
+  }
+  if (type === 'DIVIDE') {
+    if (num2 === 0) {
+      return 'Error';
+    }
+    return num1 / num2;
+  }
+
+  throw new Error('Invalid operation type');
 }
 
 module.exports = calculateNumber;
