@@ -6,18 +6,21 @@ const Utils = require('./utils');
 const sendPaymentRequestToApi = require('./3-payment');
 
 describe('sendPaymentRequestToApi', () => {
-  it('should call calculateNumber with SUM, 100, 20', () => {
-    // Créer un spy pour la fonction calculateNumber
-    const spy = sinon.spy(Utils, 'calculateNumber');
+  let spy;
 
-    // Appeler la fonction à tester
+  beforeEach(() => {
+    spy = sinon.spy(Utils, 'calculateNumber');
+  });
+
+  afterEach(() => {
+    spy.restore();
+  });
+
+  it('should call Utils.calculateNumber with SUM and the correct arguments', () => {
     sendPaymentRequestToApi(100, 20);
 
-    // Vérifier que le spy a bien été appelé avec les bons arguments
-    expect(spy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
-
-    // Restaurer le spy pour éviter les comportements étranges
-    spy.restore();
+    expect(spy.calledOnce).to.be.true;
+    expect(spy.calledWith('SUM', 100, 20)).to.be.true;
   });
 });
 

@@ -2,16 +2,24 @@
 // Create a new file and module
 
 const Utils = {
-  calculateNumber: (type, a, b) => {
+  calculateNumber: function (type, a, b) {
+    const num1 = Math.round(a);
+    const num2 = Math.round(b);
+
     if (type === 'SUM') {
-      return a + b;
-    } else if (type === 'SUBTRACT') {
-      return a - b;
-    } else if (type === 'MULTIPLY') {
-      return a * b;
-    } else {
-      return 0;
+      return num1 + num2;
     }
+    if (type === 'SUBTRACT') {
+      return num1 - num2;
+    }
+    if (type === 'DIVIDE') {
+      if (num2 === 0) {
+        return 'Error';
+      }
+      return num1 / num2;
+    }
+
+    throw new Error('Invalid operation type');
   }
 };
 

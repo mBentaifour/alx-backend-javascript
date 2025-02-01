@@ -11,3 +11,4 @@ function sendPaymentRequestToApi(totalAmount, totalShipping) {
 }
 
 module.exports = sendPaymentRequestToApi;
+
