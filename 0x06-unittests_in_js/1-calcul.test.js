@@ -1,4 +1,5 @@
 // 1-calcul.test.js
+// Basic test with Mocha and Node assertion library
 
 const assert = require('assert');
 const calculateNumber = require('./1-calcul');

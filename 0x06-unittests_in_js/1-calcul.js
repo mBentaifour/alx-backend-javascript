@@ -1,23 +1,21 @@
-// 1-calcul.js
+// Basic test with Mocha and Node assertion library
 
-function calculateNumber(type, a, b) {
-  const roundedA = Math.round(a);
-  const roundedB = Math.round(b);
+const calculateNumber = (type, x, z) => {
+  const xRound = Math.round(x);
+  const zRound = Math.round(z);
 
-  switch (type) {
-    case 'SUM':
-      return roundedA + roundedB;
-    case 'SUBTRACT':
-      return roundedA - roundedB;
-    case 'DIVIDE':
-      if (roundedB === 0) {
-        return 'Error';
-      }
-      return roundedA / roundedB;
-    default:
-      throw new Error('Invalid operation type');
+  if (type === 'SUBTRACT') {
+    return xRound - zRound;
   }
-}
+
+  if (type === 'DIVIDE') {
+    if (xRound === 0) {
+      return 'Error';
+    }
+    return xRound / zRound;
+  }
+
+  return xRound + zRound;
+};
 
 module.exports = calculateNumber;
-
