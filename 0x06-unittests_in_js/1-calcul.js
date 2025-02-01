@@ -1,21 +1,22 @@
-// Basic test with Mocha and Node assertion library
+function calculateNumber(type, a, b) {
+  const num1 = Math.round(a);
+  const num2 = Math.round(b);
 
-const calculateNumber = (type, x, z) => {
-  const xRound = Math.round(x);
-  const zRound = Math.round(z);
-
+  if (type === 'SUM') {
+    return num1 + num2;
+  }
   if (type === 'SUBTRACT') {
-    return xRound - zRound;
+    return num1 - num2;
   }
-
   if (type === 'DIVIDE') {
-    if (xRound === 0) {
-      return 'Error';
+    if (num2 === 0) {
+      return 'Error'; // Correction ici : On retourne bien "Error"
     }
-    return xRound / zRound;
+    return num1 / num2;
   }
 
-  return xRound + zRound;
-};
+  throw new Error('Invalid operation type'); // On s'assure que ça lève une erreur
+}
 
 module.exports = calculateNumber;
+
