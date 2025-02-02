@@ -4,9 +4,9 @@
   "description": "Projet de tests unitaires en JavaScript",
   "main": "0-calcul.js",
   "scripts": {
-    "lint": "eslint .",
-    "check-lint": "eslint [0-9]*.js",
-    "test": "mocha --require @babel/register"
+  "lint": "eslint .",
+  "check-lint": "eslint [0-9]*.js",
+  "test": "mocha --require @babel/register \"*.test.js\""
   },
   "repository": {
     "type": "git",
