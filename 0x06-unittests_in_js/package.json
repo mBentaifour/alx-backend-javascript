@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "check-lint": "eslint [0-9]*.js",
-    "test": "mocha --require @babel/register --exit"
+    "test": "mocha --require @babel/register"
   },
   "repository": {
     "type": "git",
