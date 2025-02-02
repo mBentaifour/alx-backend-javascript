@@ -1,22 +1,11 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
+import pluginReact from "eslint-plugin-react";
 
-/** @type {import('eslint').Linter.Config[]} */
+
 export default [
-  {
-    files: ["**/*.{js,mjs,cjs,jsx}"],
-    languageOptions: { 
-      globals: { 
-        ...globals.browser, 
-        module: "readonly", 
-        require: "readonly", 
-        describe: "readonly", 
-        it: "readonly", 
-        beforeEach: "readonly", 
-        afterEach: "readonly" 
-      },
-      ecmaVersion: "latest"
-    },
-  }
+  {files: ["**/*.{js,mjs,cjs,jsx}"]},
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
+  pluginReact.configs.flat.recommended,
 ];
-
