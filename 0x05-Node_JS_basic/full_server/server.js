@@ -1,14 +1,13 @@
-import express from 'express';
-import router from './routes';
+const express = require('express');
+const routes = require('./routes');
 
 const app = express();
-const PORT = 1245;
+const port = 1245;
 
-mapRoutes(app);
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Server listening on PORT ${PORT}`);
+app.use('/', routes);
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
 });
 
 export default app;
-module.exports = app;

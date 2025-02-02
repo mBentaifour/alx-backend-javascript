@@ -1,43 +1,23 @@
-/* eslint-disable no-restricted-syntax */
-// eslint-disable-next-line import/no-import-module-exports
-import fs from 'fs';
+#!/usr/bin/node
+const fs = require('fs').promises;
 
-const readDatabase = (dataPath) => new Promise((resolve, reject) => {
-  if (!dataPath) {
-    reject(new Error('Cannot load the database'));
+async function readDatabase(filePath) {
+  try {
+    const data = await fs.readFile(filePath, 'utf8');
+    const lines = data.split('\n').filter((line) => line.trim() !== '');
+    const students = lines.slice(1);
+    
+    const fields = {};
+    for (const student of students) {
+      const [firstName, , , field] = student.split(',');
+      if (!fields[field]) fields[field] = [];
+      fields[field].push(firstName);
+    }
+
+    return fields;
+  } catch (error) {
+    throw new Error('Cannot load the database');
   }
-  if (dataPath) {
-    fs.readFile(dataPath, (err, data) => {
-      if (err) {
-        reject(new Error('Cannot load the database'));
-      }
-      if (data) {
-        const fileLines = data
-          .toString('utf-8')
-          .trim()
-          .split('\n');
-        const studentGroups = {};
-        const dbFieldNames = fileLines[0].split(',');
-        const studentPropNames = dbFieldNames
-          .slice(0, dbFieldNames.length - 1);
+}
 
-        for (const line of fileLines.slice(1)) {
-          const studentRecord = line.split(',');
-          const studentPropValues = studentRecord
-            .slice(0, studentRecord.length - 1);
-          const field = studentRecord[studentRecord.length - 1];
-          if (!Object.keys(studentGroups).includes(field)) {
-            studentGroups[field] = [];
-          }
-          const studentEntries = studentPropNames
-            .map((propName, idx) => [propName, studentPropValues[idx]]);
-          studentGroups[field].push(Object.fromEntries(studentEntries));
-        }
-        resolve(studentGroups);
-      }
-    });
-  }
-});
-
-export default readDatabase;
-module.exports = readDatabase;
+module.exports = { readDatabase };
