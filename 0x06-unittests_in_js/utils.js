@@ -1,24 +1,17 @@
 // utils.js
 // Create a new file and module
 
-// utils.js
-const calculateNumber = (type, a, b) => {
-  const roundA = Math.round(a);
-  const roundB = Math.round(b);
-  
-  if (type === 'SUM') {
-    return roundA + roundB;
-  }
-  if (type === 'SUBTRACT') {
-    return roundA - roundB;
-  }
-  if (type === 'DIVIDE') {
-    if (roundB === 0) {
-      return 'Error';
+const Utils = {
+  calculateNumber: (type, a, b) => {
+    if (type === 'SUM') return Math.round(a) + Math.round(b);
+    if (type === 'SUBTRACT') return Math.round(a) - Math.round(b);
+    if (type === 'DIVIDE') {
+      if (Math.round(b) === 0) return 'Error';
+      return Math.round(a) / Math.round(b);
     }
-    return roundA / roundB;
+    return 'Error';
   }
 };
 
-module.exports = { calculateNumber };
+module.exports = Utils;
 

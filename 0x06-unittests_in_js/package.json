@@ -1,32 +1,32 @@
 {
   "name": "unittests_in_js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projet de tests unitaires en JavaScript",
   "main": "0-calcul.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint",
-    "check-lint": "lint [0-9]*.js",
-    "test": "./node_modules/.bin/mocha --require @babel/register --exit"
+    "lint": "eslint .",
+    "check-lint": "eslint [0-9]*.js",
+    "test": "mocha --require @babel/register --exit"
   },
-  "keywords": [],
-  "author": "Tafara Nyamhunga",
-  "license": "ISC",
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "eslint": "^9.9.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jest": "^28.8.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mBentaifour/alx-backend-javascript/tree/master/0x06-unittests_in_js"
   },
+  "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.26.7",
-    "@babel/preset-env": "^7.26.7",
-    "@babel/register": "^7.25.9",
-    "assert": "^2.1.0",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/register": "^7.22.10",
+    "@eslint/js": "^9.19.0",
+    "assert": "^2.0.0",
+    "browserslist": "^4.24.4",
     "chai": "^4.5.0",
-    "mocha": "^10.8.2",
-    "sinon": "^18.0.1"
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "globals": "^15.14.0",
+    "mocha": "^11.1.0",
+    "sinon": "^16.1.3"
   }
 }
